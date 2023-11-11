@@ -18,4 +18,5 @@ public interface BookRepository extends JpaRepository<BookEntity, Long> {
 	List<BookEntity> findAllByCategory(CategoryEntity category);
 	Long countByNameContaining(String name);
 	Long countByNameContainingAndCategory(String name, CategoryEntity category);
+	List<BookEntity> findByIdIn(List<Long> listId);
 }

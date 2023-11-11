@@ -90,7 +90,7 @@
                                     <label for="type-banking">Chuyển khoản ngân hàng</label>
                                 </div>
                                 <div class="app-body-payment-type__content-group">
-                                    <input type="radio" name="payment-type" id="type-pay-when-receive">
+                                    <input type="radio" name="payment-type" id="type-pay-when-receive" checked>
                                     <label for="type-pay-when-receive">Thanh toán tiền mặt khi nhận hàng (COD)</label>
                                 </div>
                             </div>

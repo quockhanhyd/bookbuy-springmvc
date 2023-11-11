@@ -3,59 +3,87 @@ var account;
 
 // Load list cart
 function loadListCart() {
-    var cartListDOM = document.querySelector('.app-content-cart-list__list');
-    cartListDOM.innerHTML = '';
+	var listId = carts.map(function(item) {
+		return item.id;
+	})
+	
+	var http = new XMLHttpRequest();
+    http.open('POST', path + 'api/book-quantity');
+    http.setRequestHeader('Content-Type', 'application/json');
+    http.send(JSON.stringify(listId));
 
-    var totalBooks = 0;
-    var totalPrice = 0;
-    
-    
-    if(carts.length > 0) {
-        carts.forEach(function(value) {
-            totalBooks += value.quantity;
-            totalPrice += value.currentPrice * value.quantity;
-    
-            var cartDOM = document.createElement('div');
-            cartDOM.classList.add('app-content-cart-list__item');
-    
-            cartDOM.innerHTML = `
-            <div class="app-content-cart-list-item__img">
-                <img src="template/images/${value.image}" alt="">
-            </div>
-            <div class="app-content-cart-list-item__body">
-                <div class="app-content-cart-list-item-body__name">${value.name}</div>
-                <div class="app-content-cart-list-item-body__author">${value.author}</div>
-                <span class="app-content-cart-list-item-body__remove" onclick="showDialogQuestion(${value.id})">Xóa</span>
-            </div>
-            <div class="app-content-cart-list-item__price">${new Intl.NumberFormat().format(value.currentPrice)}đ</div>
-            <div class="app-content-cart-list-item__quantiy">
-                <div class="app-content-cart-list-item-quantiy__down" onclick="downQuantity(${value.id})">-</div>
-                <div class="app-content-cart-list-item-quantiy__input">
-                    <input type="text" value="${value.quantity}">
-                </div>
-                <div class="app-content-cart-list-item-quantiy__up" onclick="upQuantity(${value.id})">+</div>
-            </div>
-            `;
-    
-            cartListDOM.appendChild(cartDOM);
-        });
+    http.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+            var listQuantity = JSON.parse(this.responseText);
+            var cartListDOM = document.querySelector('.app-content-cart-list__list');
+		    cartListDOM.innerHTML = '';
+		
+		    var totalBooks = 0;
+		    var totalPrice = 0;
+		    
+		    
+		    if(carts.length > 0) {
+		        carts.forEach(function(value) {
+		            totalBooks += value.quantity;
+		            totalPrice += value.currentPrice * value.quantity;
+		    
+		            var cartDOM = document.createElement('div');
+		            cartDOM.classList.add('app-content-cart-list__item');
+		            
+		            quantity = listQuantity.data.find(function(item) {
+						return item.id === value.id;
+					})
+		    
+		            cartDOM.innerHTML = `
+		            <div class="app-content-cart-list-item__img">
+		                <img src="template/images/${value.image}" alt="">
+		            </div>
+		            <div class="app-content-cart-list-item__body">
+		                <div class="app-content-cart-list-item-body__name">${value.name}</div>
+		                <div class="app-content-cart-list-item-body__author">${value.author}</div>
+		                <span class="app-content-cart-list-item-body__remove" onclick="showDialogQuestion(${value.id})">Xóa</span>
+		            </div>
+		            <div class="app-content-cart-list-item__price">${new Intl.NumberFormat().format(value.currentPrice)}đ</div>
+		            <div class="app-content-cart-list-item__quantiy" style="display: block;">
+		            	<div class="app-content-cart-list-item__quantiy">
+			                <div class="app-content-cart-list-item-quantiy__down" onclick="downQuantity(${value.id})">-</div>
+			                <div class="app-content-cart-list-item-quantiy__input">
+			                    <input type="text" value="${value.quantity}">
+			                </div>
+			                <div class="app-content-cart-list-item-quantiy__up" onclick="upQuantity(${value.id})">+</div>
+		                </div>
+		                ${value.quantity > quantity.quantity ? `<div style="
+						    padding-top: 6px;
+						    font-size: 10px;
+						    color: red;
+						    font-style: italic;
+						    /* display: none; */
+						">Vượt quá số lượng sách<br>trong kho (hiện còn ${quantity.quantity})</div>`: ""}
+		                
+		            </div>
+		            `;
+		    
+		            cartListDOM.appendChild(cartDOM);
+		        });
+		    }
+		    else {
+		        cartListDOM.classList.add('cart-empty');
+		        cartListDOM.innerHTML = `
+		        <h2>Giỏ hàng trống</h2>
+		        <img src="template/images/empty-cart.png" alt="empty-no-cart">
+		        <div><a class="app__btn" href="${path}home">Quay về trang mua sách</a></div>
+		        `;
+		
+		        document.querySelector('.app-content-cart-list-checkout__btn').style.backgroundColor = '#999';
+		        document.querySelector('.app-content-cart-list-checkout__btn').style.cursor = 'default';
+		    }
+		
+		    document.querySelector('.app-content-cart-list-checkout-body__quantity')
+		            .innerHTML = `${totalBooks} sản phẩm`;
+		    document.querySelector('.app-content-cart-list-checkout-body__total-price')
+		            .innerHTML = `${new Intl.NumberFormat().format(totalPrice)}đ`;
+        }
     }
-    else {
-        cartListDOM.classList.add('cart-empty');
-        cartListDOM.innerHTML = `
-        <h2>Giỏ hàng trống</h2>
-        <img src="template/images/empty-cart.png" alt="empty-no-cart">
-        <div><a class="app__btn" href="${path}home">Quay về trang mua sách</a></div>
-        `;
-
-        document.querySelector('.app-content-cart-list-checkout__btn').style.backgroundColor = '#999';
-        document.querySelector('.app-content-cart-list-checkout__btn').style.cursor = 'default';
-    }
-
-    document.querySelector('.app-content-cart-list-checkout-body__quantity')
-            .innerHTML = `${totalBooks} sản phẩm`;
-    document.querySelector('.app-content-cart-list-checkout-body__total-price')
-            .innerHTML = `${new Intl.NumberFormat().format(totalPrice)}đ`;
 }
 
 // Quantity up down

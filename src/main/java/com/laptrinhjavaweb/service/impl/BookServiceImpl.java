@@ -68,4 +68,9 @@ public class BookServiceImpl implements IBookService {
 		bookRepository.delete(bookEntity);
 	}
 
+	@Override
+	public List<BookEntity> findByIdIn(List<Long> listId) {
+		return bookRepository.findByIdIn(listId);
+	}
+
 }

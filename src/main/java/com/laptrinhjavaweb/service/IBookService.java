@@ -18,4 +18,5 @@ public interface IBookService {
 	Long count();
 	BookEntity save(BookEntity bookEntity);
 	void delete(BookEntity bookEntity);
+	List<BookEntity> findByIdIn(List<Long> listId);
 }

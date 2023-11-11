@@ -29,7 +29,12 @@
                         <div class="app-content-info__current-price">${FormatNumberUltils.priceToString(book.currentPrice)}đ</div>
                         <div class="app-content-info__sale">-${book.sale}%</div>
                         <div class="app-content-info__old-price">${FormatNumberUltils.priceToString(book.oldPrice)}đ</div>
-                        <div class="app-content-info__status">Tình trạng: <p>Còn hàng</p></div>
+                        <c:if test="${book.quantity > 0}">
+                        	<div class="app-content-info__status">Tình trạng: <p style="font-weight: 600">Còn hàng (${book.quantity}quyển)</p></div>
+                        </c:if>
+                        <c:if test="${book.quantity <= 0}">
+                        	<div class="app-content-info__status">Tình trạng: <p style="color: red; font-weight: 600">Hết hàng</p></div>
+                        </c:if>
                         <div class="app-content-info__cate">Danh mục: <a href="#">${book.cateName}</a></div>
                         <div class="app-content-info__quantity">
                             Số lượng: &nbsp; &nbsp;

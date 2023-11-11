@@ -11,11 +11,13 @@ import com.laptrinhjavaweb.dto.OrderDTO;
 import com.laptrinhjavaweb.dto.PurchaseDTO;
 import com.laptrinhjavaweb.entity.BillEntity;
 import com.laptrinhjavaweb.entity.BillInfoEntity;
+import com.laptrinhjavaweb.entity.BookEntity;
 import com.laptrinhjavaweb.entity.CustomerEntity;
 import com.laptrinhjavaweb.mapper.BillInfoMapper;
 import com.laptrinhjavaweb.mapper.CustomerMapper;
 import com.laptrinhjavaweb.repository.BillInfoRepository;
 import com.laptrinhjavaweb.repository.BillRepository;
+import com.laptrinhjavaweb.repository.BookRepository;
 import com.laptrinhjavaweb.repository.CustomerRepository;
 import com.laptrinhjavaweb.service.IPurchaseService;
 
@@ -30,6 +32,9 @@ public class PurchaseServiceImpl implements IPurchaseService {
 
 	@Autowired
 	private CustomerRepository customerRepository;
+	
+	@Autowired
+	private BookRepository bookRepository;
 	
 	@Autowired
 	private CustomerMapper customerMapper;
@@ -127,6 +132,16 @@ public class PurchaseServiceImpl implements IPurchaseService {
 		if(bill.getStatus() < 3) {
 			bill.setStatus(bill.getStatus()+1);
 			billRepository.save(bill);
+			
+			// Nếu đơn hàng được xác nhận -> số lượng sách giảm đi
+			if (bill.getStatus() == 1) {
+				bill.getBillsInfo().forEach(item -> {
+					BookEntity book = bookRepository.getOne(item.getBookId());
+					book.setQuantity(book.getQuantity() - item.getQuantity());
+					bookRepository.save(book);
+				});
+			}
+				
 			return true;
 		}
 		else if(bill.getStatus() >= 4) {

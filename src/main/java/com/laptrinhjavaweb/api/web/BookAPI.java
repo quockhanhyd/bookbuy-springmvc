@@ -2,17 +2,21 @@ package com.laptrinhjavaweb.api.web;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.laptrinhjavaweb.dto.BookDTO;
+import com.laptrinhjavaweb.dto.BookQuantityDTO;
 import com.laptrinhjavaweb.dto.response.ResponseMessage;
 import com.laptrinhjavaweb.entity.BookEntity;
 import com.laptrinhjavaweb.entity.CategoryEntity;
@@ -108,6 +112,27 @@ public class BookAPI {
 					)
 				);
 		}
+	}
+	
+	@PostMapping(value = {"/book-quantity"})
+	public ResponseEntity<?> getQuantity(@RequestBody List<Long> listId) {
+		List<BookEntity> listBook = bookService.findByIdIn(listId);
+		List<BookQuantityDTO> ltReturn = new ArrayList<>();
+		listBook.forEach(item -> {
+			ltReturn.add(new BookQuantityDTO(item.getId(), item.getQuantity()));
+		});
+		
+		return (listBook != null) ? 
+				ResponseEntity.ok(new ResponseMessage(
+						"OK", 
+						"Data book has already taken!", 
+						ltReturn
+						)) :
+				ResponseEntity.ok(new ResponseMessage(
+						"FAILED", 
+						"Data book don't found in DB!", 
+						null
+						));
 	}
 
 }
