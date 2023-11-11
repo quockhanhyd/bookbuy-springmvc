@@ -248,6 +248,7 @@ function loadHeader() {
     
 }
 
+
 // Call function
 getDataCate();
 authorization();

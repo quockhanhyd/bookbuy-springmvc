@@ -64,8 +64,16 @@ function getCurrentAccount() {
         if (this.readyState == 4 && this.status == 200) {
             var responseData = JSON.parse(this.responseText);
             account = responseData.data;
+            loadHeader();
         }
     }
+}
+
+function loadHeader() {
+	var fullNameDOM = document.querySelector('body > div.app > div > div.grid.wide > div > div.col.l-3.m-12.c-12 > div > div > div.app-container-menu-user__info > div.app-container-menu-user-info__name');
+    var emailDOM = document.querySelector('body > div.app > div > div.grid.wide > div > div.col.l-3.m-12.c-12 > div > div > div.app-container-menu-user__info > div.app-container-menu-user-info__email');
+    fullNameDOM.innerHTML = account.fullName;
+    emailDOM.innerHTML = account.email;
 }
 
 // Format Item's id
