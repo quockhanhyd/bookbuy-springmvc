@@ -20,6 +20,7 @@ function loadListCart() {
 		
 		    var totalBooks = 0;
 		    var totalPrice = 0;
+			var isAccept = true;
 		    
 		    
 		    if(carts.length > 0) {
@@ -33,6 +34,8 @@ function loadListCart() {
 		            quantity = listQuantity.data.find(function(item) {
 						return item.id === value.id;
 					})
+					
+					isAccept = isAccept && value.quantity <= quantity.quantity;
 		    
 		            cartDOM.innerHTML = `
 		            <div class="app-content-cart-list-item__img">
@@ -57,7 +60,6 @@ function loadListCart() {
 						    font-size: 10px;
 						    color: red;
 						    font-style: italic;
-						    /* display: none; */
 						">Vượt quá số lượng sách<br>trong kho (hiện còn ${quantity.quantity})</div>`: ""}
 		                
 		            </div>
@@ -82,6 +84,12 @@ function loadListCart() {
 		            .innerHTML = `${totalBooks} sản phẩm`;
 		    document.querySelector('.app-content-cart-list-checkout-body__total-price')
 		            .innerHTML = `${new Intl.NumberFormat().format(totalPrice)}đ`;
+		            
+		    if (!isAccept) {
+				var btn = document.querySelector("body > div.app > div > div > div.app-content__cart-list > div > div.col.l-3.m-3.c-12 > div > a");
+				btn.style.backgroundColor = 'rgb(153, 153, 153)';
+				btn.style.cursor = 'no-drop';
+			}
         }
     }
 }

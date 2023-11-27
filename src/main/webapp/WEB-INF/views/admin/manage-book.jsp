@@ -116,7 +116,7 @@
                         <input type="checkbox" id="cbo-show-modal" hidden>
                         <label for="cbo-show-modal" class="modal">
                             <!-- Prefix class: create: modal__input-create; edit: modal__input-edit -->
-                            <label for="none" class="modal__input modal__input-edit">
+                            <label for="none" class="modal__input modal__input-edit" style="height: 658px">
                                 <div>
                                     <div class="modal-input__text hide-on-create">
                                         <h2>Chi tiết thông tin sách!</h2>
@@ -169,12 +169,6 @@
                                                     <input type="text" name="book-quantity" id="book-quantity"
                                                         placeholder="Nhập số lượng..." required>
                                                 </div>
-                                                <div class="modal-input__group">
-                                                    <i class="fas fa-file-alt"></i>
-                                                    <input type="text" name="book-description"
-                                                        id="book-description" placeholder="Nhập mô tả..."
-                                                        required>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="col l-4">
@@ -187,6 +181,11 @@
                                                 <p>(Kích thước ảnh tối đa 1MB)</p>
                                             </form>
                                         </div>
+                                    </div>
+                                    <div style="height: 250px" class="modal-input__group">
+                                        <textarea name="book-description"
+                                            id="book-description" placeholder="Nhập mô tả..."
+                                            required></textarea>
                                     </div>
                                     <div class="modal-input__btn">
                                         <span class="hide-on-edit" style="flex: 1;" onclick="editBook('POST')">Thêm mới</span>
@@ -213,3 +212,26 @@
 </div>
 <script src="<c:url value='/template/js/main_base_admin.js' />"></script>
 <script src="<c:url value='/template/js/main_manage_book.js' />"></script>
+<script src="https://cdn.tiny.cloud/1/ivv14umg7qjpjk4ojxvzrggmfhtz1xj6d3qq52xbf6967rnx/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+	  selector: '#book-description',
+	  height: 250,
+	  width: 1000,
+	  plugins: [
+	    'advlist autolink lists link image charmap print preview anchor',
+	    'searchreplace visualblocks code fullscreen',
+	    'insertdatetime media table paste code help wordcount'
+	  ],
+	  toolbar: 'undo redo | formatselect | ' +
+	  'bold italic backcolor | alignleft aligncenter ' +
+	  'alignright alignjustify | bullist numlist outdent indent | ' +
+	  'removeformat | help',
+	  content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+	});
+    
+    document.addEventListener('DOMContentLoaded', function () {
+    	 var content = tinymce.get('book-description').getContent();
+    	      console.log(content);
+    	});
+</script>

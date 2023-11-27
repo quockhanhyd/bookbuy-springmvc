@@ -72,6 +72,7 @@ function showEdit(id) {
     document.getElementById('book-sale').value = book.sale;
     document.getElementById('book-quantity').value = book.quantity;
     document.getElementById('book-description').value = book.description;
+    tinymce.get('book-description').setContent(book.description);
     document.querySelector('.modal-input__img img').src = `${path}template/images/${book.image}`;
 }
 
@@ -93,6 +94,7 @@ function showCreate() {
     document.getElementById('book-old-price').value = '';
     document.getElementById('book-sale').value = '';
     document.getElementById('book-quantity').value = '';
+    tinymce.get('book-description').setContent('');
     document.getElementById('book-description').value = '';
 }
 
@@ -230,7 +232,7 @@ function editBook(method) {
         oldPrice: document.getElementById('book-old-price').value,
         sale: document.getElementById('book-sale').value,
         quantity: document.getElementById('book-quantity').value,
-        description: document.getElementById('book-description').value.trim(),
+        description: tinymce.get('book-description').getContent().trim(),
         image: document.querySelector('.modal-input__img img').src.split('/')[document.querySelector('.modal-input__img img').src.split('/').length-1]
     }
 

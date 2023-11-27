@@ -164,7 +164,7 @@
     font-weight: 600;
     margin-top: 24px;
 }
-.row2__introduce p{
+.row2__introduce > p{
     font-size: 2.4rem;
     line-height: 2.6rem;
     font-weight: 600;
