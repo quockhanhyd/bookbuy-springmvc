@@ -37,12 +37,12 @@
     <div class="app-content__books">
         <div class="grid wide">
             <div class="row">
-                <div class="col l-2 m-4 c-12">
+                <div class="col l-3 m-4 c-12">
                     <div class="app-content-books__title"><span
                             class="material-icons-outlined">view_list</span>DANH MỤC SÁCH</div>
                     <ul class="app-content-books__cate"></ul>
                 </div>
-                <div class="col l-10 m-8 c-12">
+                <div class="col l-9 m-8 c-12">
                     <div class="app-content-books__text">SÁCH BÁN CHẠY</div>
                     <div class="app-content-books__list" id="ds-sach-ban-chay"></div>
                     
