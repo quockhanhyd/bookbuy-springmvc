@@ -83,6 +83,17 @@ public class BookAPI {
 				ResponseEntity.ok(new ResponseMessage("OK", "Data books has already taken!", result));
 	}
 	
+	@GetMapping(value = {"/list-books-ban-chay"})
+	public ResponseEntity<?> getListBooksBanChay() {
+		List<BookDTO> result = new ArrayList<>();
+		for (BookEntity book : bookService.findAllByOrderByNumberSoldDesc()) {
+			result.add(bookMapper.convertToDTO(book));
+		}
+		return result.isEmpty() ?
+				ResponseEntity.ok(new ResponseMessage("OK", "Data books is empty!", result)) :
+				ResponseEntity.ok(new ResponseMessage("OK", "Data books has already taken!", result));
+	}
+	
 	@GetMapping(value = {"/number-books"})
 	public ResponseEntity<?> getNumberBooks(@RequestParam(required = false, defaultValue = "", value = "search") String search,
 			@RequestParam(required = false, defaultValue = "0", value = "cate") long cate) {

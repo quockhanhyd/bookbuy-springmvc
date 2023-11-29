@@ -36,6 +36,12 @@ function loadCategory() {
     categories.forEach(function (value, index) {
         cateDOM.innerHTML += `<li class="app-header-main-search-filter-choose__item" onclick="categoryChange(${index}, ${value.id})">${value.name}</li>`;
     });
+    
+    var listCateCDOM = document.querySelector('.app-content-books__cate');
+    listCateCDOM.innerHTML = '';
+    categories.forEach(function (value) {
+        listCateCDOM.innerHTML += `<li class="app-content-books-cate__item"><a href="${path}search?cate=${value.id}&search=">${value.name}</a></li>`;
+    });
 }
 
 function categoryChange(index, id) {

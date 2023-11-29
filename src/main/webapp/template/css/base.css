@@ -482,7 +482,7 @@ html {
 
 /* Content Pagination */
 .app-content__pagination {
-    margin: 12px 0;
+    margin: 12px 0 2px 0px;
     background-color: var(--white-color);
     height: 3.8rem;
     display: flex;
@@ -492,7 +492,7 @@ html {
     overflow: hidden;
 }
 
-.app-content__pagination a {
+.app-content__pagination span, .app-content__pagination a {
     color: var(--text-color-light);
     text-decoration: none;
     display: block;

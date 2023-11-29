@@ -28,6 +28,11 @@ public class BookServiceImpl implements IBookService {
 	}
 
 	@Override
+	public List<BookEntity> findAllByOrderByNumberSoldDesc() {
+		return bookRepository.findTop5ByOrderByNumberSoldDesc();
+	}
+
+	@Override
 	public List<BookEntity> findAllByNameContainingOrderByIdDesc(String name, Pageable pageable) {
 		return bookRepository.findAllByNameContainingOrderByIdDesc(name, pageable).getContent();
 	}

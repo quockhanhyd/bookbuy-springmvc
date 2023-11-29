@@ -33,6 +33,9 @@ public class BookEntity extends BaseEntity {
 	@Column
 	private int sale;
 	
+	@Column
+	private Long numberSold;
+	
 	@Column(columnDefinition = "TEXT")
 	private String description;
 	
@@ -49,7 +52,6 @@ public class BookEntity extends BaseEntity {
 	public BookEntity() {
 		super();
 	}
-
 	public BookEntity(String name, String author, Long quantity, Long currentPrice, Long oldPrice,
 			String description, String image) {
 		super();
@@ -85,6 +87,15 @@ public class BookEntity extends BaseEntity {
 	public void setQuantity(Long quantity) {
 		this.quantity = quantity;
 	}
+
+	public Long getNumberSold() {
+		return numberSold;
+	}
+
+	public void setNumberSold(Long numberSold) {
+		this.numberSold = numberSold;
+	}
+
 
 	public Long getCurrentPrice() {
 		return currentPrice;

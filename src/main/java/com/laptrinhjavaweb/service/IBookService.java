@@ -10,6 +10,7 @@ import com.laptrinhjavaweb.entity.CategoryEntity;
 public interface IBookService {
 	BookEntity findOne(Long id);
 	List<BookEntity> findAllByOrderByIdDesc(Pageable pageable);
+	List<BookEntity> findAllByOrderByNumberSoldDesc();
 	List<BookEntity> findAllByNameContainingOrderByIdDesc(String name, Pageable pageable);
 	List<BookEntity> findAllByNameContainingAndCategoryOrderByIdDesc(String name, CategoryEntity category, Pageable pageable);
 	List<BookEntity> findAllByCategory(CategoryEntity category);

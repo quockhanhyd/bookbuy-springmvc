@@ -134,14 +134,16 @@ public class PurchaseServiceImpl implements IPurchaseService {
 			billRepository.save(bill);
 			
 			// Nếu đơn hàng được xác nhận -> số lượng sách giảm đi
+			// Và số lượng sách bán được tăng thêm
 			if (bill.getStatus() == 1) {
 				bill.getBillsInfo().forEach(item -> {
 					BookEntity book = bookRepository.getOne(item.getBookId());
 					book.setQuantity(book.getQuantity() - item.getQuantity());
+					book.setNumberSold(book.getNumberSold() + item.getQuantity());
 					bookRepository.save(book);
 				});
 			}
-				
+	
 			return true;
 		}
 		else if(bill.getStatus() >= 4) {

@@ -13,6 +13,7 @@ import com.laptrinhjavaweb.entity.CategoryEntity;
 @Repository
 public interface BookRepository extends JpaRepository<BookEntity, Long> {
 	Page<BookEntity> findAllByOrderByIdDesc(Pageable pageable);
+	List<BookEntity> findTop5ByOrderByNumberSoldDesc();
 	Page<BookEntity> findAllByNameContainingOrderByIdDesc(String name, Pageable pageable);
 	Page<BookEntity> findAllByNameContainingAndCategoryOrderByIdDesc(String name, CategoryEntity category, Pageable pageable);
 	List<BookEntity> findAllByCategory(CategoryEntity category);

@@ -39,29 +39,17 @@
             <div class="row">
                 <div class="col l-2 m-4 c-12">
                     <div class="app-content-books__title"><span
-                            class="material-icons-outlined">view_list</span>Danh mục sách</div>
-                    <ul class="app-content-books__cate">
-                        <li class="app-content-books-cate__item"><a href="#">Truyện tranh</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Artbook & sách tranh</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Văn học Việt Nam</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Văn học nước ngoài</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Kinh tế</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Sách - Truyện thiếu nhi</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Sách Teen</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Sách cho cha mẹ</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Khoa học công nghệ</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Thể dục thể thao</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Từ điển</a></li>
-                    </ul>
+                            class="material-icons-outlined">view_list</span>DANH MỤC SÁCH</div>
+                    <ul class="app-content-books__cate"></ul>
                 </div>
                 <div class="col l-10 m-8 c-12">
-                    <div class="app-content-books__text">Sách mới</div>
-
-                    <!-- Render list book here -->
-                    <div class="app-content-books__list"></div>
-
-                    <!-- Pagination -->
-                    <div class="app-content__pagination"></div>
+                    <div class="app-content-books__text">SÁCH BÁN CHẠY</div>
+                    <div class="app-content-books__list" id="ds-sach-ban-chay"></div>
+                    
+                    <div class="app-content-books__text" style="margin-top: 50px;">SÁCH MỚI</div>
+                    <div class="app-content__pagination" id="page-sach-moi"></div>
+                    <div class="app-content-books__list" id="ds-sach-moi"></div>
+                    
                 </div>
             </div>
         </div>
