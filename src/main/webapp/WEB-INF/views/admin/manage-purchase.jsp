@@ -88,34 +88,7 @@
                                 <th>Thao tác</th>
                             </thead>
                             <!-- Render data -->
-                            <tbody>
-                                <tr>
-                                    <td>DH00002</td>
-                                    <!-- Chờ xác nhận: status-waiting; Đang đóng gói: status-packing; -->
-                                    <!-- Đang vận chuyển: status-delivering; Đã giao: status-delivered; Đã hủy: status-canceled -->
-                                    <td style="text-align: center;"><p class="app-container-content__status status-waiting">Đang giao hàng</p></td>
-                                    <td>
-                                        <div class="app-container-content__item-user" style="flex-direction: column; align-items: baseline;">
-                                            <p style="line-height: 2rem;">Họ và tên: Nguyễn Quốc Khánh</p>
-                                            <p style="line-height: 2rem;">Số điện thoại: 09121921922</p>
-                                            <p style="line-height: 2rem;">Thông tin thêm: Nam</p>
-                                            <p style="line-height: 2rem;">Địa chỉ: xóm 13, Hải Anh, Hải Hậu, Nam Định</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="app-container-content__item-user-info">SA0002 - Đây là tên sách đây là tên sách đây là tên sách - Giá: 20,000đ - SL: 2</div>
-                                        <div class="app-container-content__item-user-info">SA0002 - Đây là tên sách đây là tên sách đây là tên sách - Giá: 20,000đ - SL: 2</div>
-                                        <div class="app-container-content__item-user-info">SA0002 - Đây là tên sách đây là tên sách đây là tên sách - Giá: 20,000đ - SL: 2</div>
-                                        <div class="app-container-content__item-user-info">Tổng tiền: <b style="font-weight: 600;">220,000đ</b></div>
-                                    </td>
-                                    <td>Thanh toán khi nhận hàng</td>
-                                    <td>30,000đ</td>
-                                    <td style="color: var(--red-color);">250,000đ</td>
-                                    <td style="text-align: center;">
-                                        <label for="cbo-show-modal" class="app__btn" onclick="showEdit(id)">Chi tiết</label>
-                                    </td>
-                                </tr>
-                            </tbody>
+                            <tbody></tbody>
                         </table>
 
                         <input type="checkbox" id="cbo-show-modal" hidden>

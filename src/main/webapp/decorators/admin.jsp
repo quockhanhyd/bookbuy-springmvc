@@ -47,7 +47,7 @@
         <dec:body/>
 
         <footer class="app__footer">
-            <p>Powered by <a href="https://github.com/kasisoiqk">Nguyễn Thị Thùy Duyên</a></p>
+            <p>Powered by <a href="">Tràng An Book</a></p>
         </footer>
     </div>
 

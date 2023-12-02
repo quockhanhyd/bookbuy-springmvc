@@ -16,6 +16,30 @@ function getDataPurchases() {
     }
 }
 
+function exportBill(id) {
+    var http = new XMLHttpRequest();
+    http.open('GET', `${path}admin/api/generate-invoice?id=${id}`);
+    http.responseType = 'blob'; // Chỉ định kiểu dữ liệu trả về là blob
+    http.send();
+
+    http.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var blob = this.response;
+            var filename = http.getResponseHeader('content-disposition').split('filename=')[1];
+            var a = document.createElement('a');
+            var url = URL.createObjectURL(blob);
+            a.href = url;
+            a.download = filename; // Thiết lập tên file khi tải xuống
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(function () {
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            }, 0);
+        }
+    };
+}
+
 // Render purchase
 function renderPurchases() {
     var purchasesDOM = document.querySelector('.app-container-content__list tbody');
@@ -39,6 +63,10 @@ function renderPurchases() {
         }
         else if(value.status == 3) {
             value.status = 'Đã giao';
+            persudoClass = 'status-delivered';
+        }
+        else if(value.status == 4) {
+            value.status = 'Hoàn thành';
             persudoClass = 'status-delivered';
         }
         else {
@@ -72,6 +100,7 @@ function renderPurchases() {
         <td style="color: var(--red-color);">${new Intl.NumberFormat().format(value.totalPayment)}đ</td>
         <td style="text-align: center;">
             <label for="cbo-show-modal" class="app__btn" onclick="showEdit(${value.id})">Chi tiết</label>
+            <label class="app__btn" style="margin-top: 4px;" onclick="exportBill(${value.id})">Xuất hóa đơn</label>
         </td>
         `;
 

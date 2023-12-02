@@ -255,7 +255,7 @@
                 </div>
                 <div class="footer__copyright">
                     <p>Powered by</p>
-                    <a href="#" class="footer-copyright__info">Khanhdz 2021</a>
+                    <a href="#" class="footer-copyright__info">Tràng An Book</a>
                 </div>
             </div>
         </footer>

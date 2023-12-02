@@ -20,24 +20,12 @@
     <div class="app-content__books">
         <div class="grid wide">
             <div class="row">
-                <div class="col l-2 m-4 c-12">
+                <div class="col l-3 m-4 c-12">
                     <div class="app-content-books__title"><span
                             class="material-icons-outlined">view_list</span>Danh mục sách</div>
-                    <ul class="app-content-books__cate">
-                        <li class="app-content-books-cate__item"><a href="#">Truyện tranh</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Artbook & sách tranh</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Văn học Việt Nam</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Văn học nước ngoài</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Kinh tế</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Sách - Truyện thiếu nhi</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Sách Teen</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Sách cho cha mẹ</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Khoa học công nghệ</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Thể dục thể thao</a></li>
-                        <li class="app-content-books-cate__item"><a href="#">Từ điển</a></li>
-                    </ul>
+                    <ul class="app-content-books__cate"></ul>
                 </div>
-                <div class="col l-10 m-8 c-12">
+                <div class="col l-9 m-8 c-12">
                     <div class="app-content-books__text">Kết quả tìm kiếm</div>
 
                     <!-- Render list book here -->

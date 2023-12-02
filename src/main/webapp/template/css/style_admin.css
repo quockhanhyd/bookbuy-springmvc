@@ -4,6 +4,10 @@
     color: var(--text-color);
 }
 
+.grid.wide {
+	max-width: 100% !important;
+}
+
 
 /* Header */
 .app__header {

@@ -189,7 +189,8 @@
                                     </div>
                                     <div class="modal-input__btn">
                                         <span class="hide-on-edit" style="flex: 1;" onclick="editBook('POST')">Thêm mới</span>
-                                        <span class="hide-on-create" style="flex: 2;" onclick="editBook('PUT')">Cập nhật</span>
+                                        <span class="hide-on-create" style="flex: 2;" onclick="editBook('PUT')">Cập nhật thông tin</span>
+                                        <span class="hide-on-create" style="flex: 2;" onclick="uploadImage('PUT', document.getElementById('book-id').value)">Cập nhật ảnh</span>
                                         <span class="hide-on-create" style="flex: 1;" onclick="editBook('DELETE')">Xóa</span>
                                     </div>
                                 </div>

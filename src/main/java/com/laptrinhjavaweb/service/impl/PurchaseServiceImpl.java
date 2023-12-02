@@ -129,7 +129,7 @@ public class PurchaseServiceImpl implements IPurchaseService {
 	@Override
 	public boolean changeStatus(Long id) {
 		BillEntity bill = billRepository.findOne(id);
-		if(bill.getStatus() < 3) {
+		if(bill.getStatus() < 4) {
 			bill.setStatus(bill.getStatus()+1);
 			billRepository.save(bill);
 			
@@ -152,6 +152,16 @@ public class PurchaseServiceImpl implements IPurchaseService {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public BillEntity getOne(Long id) {
+		return billRepository.getOne(id);
+	}
+
+	@Override
+	public CustomerEntity getCustomerById(Long id) {
+		return customerRepository.getOne(id);
 	}
 
 }

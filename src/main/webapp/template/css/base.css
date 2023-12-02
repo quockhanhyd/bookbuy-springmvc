@@ -73,7 +73,7 @@ html {
 }
 
 .go-to-admin {
-    left: 50%;
+    left: 12%;
     bottom: 32px;
     transform: translateX(-50%);
     border-radius: 8px;

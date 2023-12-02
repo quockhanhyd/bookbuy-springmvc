@@ -249,10 +249,19 @@ function editBook(method) {
             if(responseData.data > 0) {
                 if(method == 'POST') {
                     book.id = parseInt(responseData.data);
-                    uploadImage(method, book);
+                    uploadImage(method, book.id);
+                    showToast({
+                        message: `Bạn đã thêm sách thành công: ${book.name}`,
+                        type: 'success',
+                        duration: 2000
+                    });
                 }
                 else if(method == 'PUT') {
-                    uploadImage(method, book);
+                    showToast({
+                        message: `Bạn đã cập nhật sách thành công: ${book.name}`,
+                        type: 'success',
+                        duration: 2000
+                    });
                 }
                 else {
                     showToast({
@@ -260,8 +269,8 @@ function editBook(method) {
                         type: 'error',
                         duration: 2000
                     });
-                    getDataBook();
                 }
+                getDataBook();
             }
             else {
                 showToast({
@@ -279,9 +288,9 @@ document.getElementById('book-img').onchange = function (event) {
     document.getElementById('image-change').setAttribute('src', URL.createObjectURL(event.target.files[0]))
 }
 
-function uploadImage(method, book) {
+function uploadImage(method, bookId) {
     var formData = new FormData(document.getElementById('post-form'));
-    formData.append('id', book.id);
+    formData.append('id', bookId);
     var http = new XMLHttpRequest();
     http.open('POST', `${path}admin/api/upload/image`);
     // http.setRequestHeader('Content-Type', 'multipart/form-data');
@@ -291,16 +300,9 @@ function uploadImage(method, book) {
         if(this.readyState == 4 && this.status == 200) {
             var responseData = JSON.parse(this.responseText);
             if(responseData.data == 'success') {
-                if (method == 'POST') {
+                if (method == 'PUT') {
                     showToast({
-                        message: `Bạn đã thêm sách thành công: ${book.name}`,
-                        type: 'success',
-                        duration: 2000
-                    });
-                }
-                else if (method == 'PUT') {
-                    showToast({
-                        message: `Bạn đã cập nhật sách thành công: ${book.name}`,
+                        message: `Cập nhật ảnh thành công!`,
                         type: 'success',
                         duration: 2000
                     });
