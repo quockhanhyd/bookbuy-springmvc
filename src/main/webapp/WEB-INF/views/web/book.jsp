@@ -38,13 +38,13 @@
                         <div class="app-content-info__cate">Danh mục: <a href="#">${book.cateName}</a></div>
                         <div class="app-content-info__quantity">
                             Số lượng: &nbsp; &nbsp;
-                            <span>-</span>
-                            <input type="text" value="1">
-                            <span>+</span>
+                            <span onclick="changeQuantity(-1)">-</span>
+                            <input type="text" value="1" id="quantity-book">
+                            <span onclick="changeQuantity(1)">+</span>
                         </div>
                         <div class="app-content-info__btn">
                             <span class="app__btn app-content-info__btn--btn-add" onclick="addToCart()">Thêm vào giỏ hàng</span>
-                            <span class="app__btn">Mua ngay</span>
+                            <span class="app__btn" onclick="buyNow()">Mua ngay</span>
                         </div>
                         <div class="app-content-info__tel">
                             Gọi đặt hàng: <a href="tel: 0961271218">0961271218</a> 

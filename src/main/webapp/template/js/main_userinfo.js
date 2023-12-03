@@ -1,11 +1,6 @@
 // Declare variable
 var account;
 
-var carts = [];
-if(localStorage.getItem('carts') != null) {
-    carts = JSON.parse(localStorage.getItem('carts'));
-}
-
 // Load data
 function loadInfo() {
     document.querySelector('.app-container-menu-user-info__name').innerHTML = account.fullName;
@@ -81,3 +76,10 @@ function getCurrentAccount() {
 
 // Call function
 getCurrentAccount();
+
+if (account != null && account != undefined) keyLocalStorage += account.id;
+
+var carts = [];
+if(localStorage.getItem(keyLocalStorage) != null) {
+    carts = JSON.parse(localStorage.getItem(keyLocalStorage));
+}

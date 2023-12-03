@@ -156,13 +156,13 @@
                                                         <i class="far fa-money-bill-alt"></i>
                                                         <input type="text" name="book-old-price"
                                                             id="book-old-price"
-                                                            placeholder="Nhập giá chưa giảm..." required>
+                                                            placeholder="Nhập giá chưa giảm..." onchange="calcCurrentPrice()" required>
                                                     </div>
                                                 </div>
                                                 <div class="modal-input__group">
                                                     <i class="fas fa-ticket-alt"></i>
                                                     <input type="text" name="book-sale" id="book-sale"
-                                                        placeholder="Nhập phần trăm giảm giá..." required>
+                                                        placeholder="Nhập phần trăm giảm giá..." onchange="calcCurrentPrice()" required>
                                                 </div>
                                                 <div class="modal-input__group">
                                                     <i class="fas fa-sort-numeric-up-alt"></i>

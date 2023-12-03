@@ -51,7 +51,7 @@ function loadListCart() {
 		            	<div class="app-content-cart-list-item__quantiy">
 			                <div class="app-content-cart-list-item-quantiy__down" onclick="downQuantity(${value.id})">-</div>
 			                <div class="app-content-cart-list-item-quantiy__input">
-			                    <input type="text" value="${value.quantity}">
+			                    <input type="text" value="${value.quantity}" onchange="changeQuantity(${value.id})" id="item${value.id}">
 			                </div>
 			                <div class="app-content-cart-list-item-quantiy__up" onclick="upQuantity(${value.id})">+</div>
 		                </div>
@@ -106,7 +106,7 @@ function upQuantity(id) {
     else {
         cart.quantity++;
     }
-    localStorage.setItem('carts', JSON.stringify(carts));
+    localStorage.setItem(keyLocalStorage, JSON.stringify(carts));
     loadListCart();
 }
 
@@ -121,7 +121,17 @@ function downQuantity(id) {
     else {
         cart.quantity--;
     }
-    localStorage.setItem('carts', JSON.stringify(carts));
+    localStorage.setItem(keyLocalStorage, JSON.stringify(carts));
+    loadListCart();
+}
+
+function changeQuantity(id) {
+    var cart = carts.find(function(value) {
+        return value.id == id;
+    });
+
+    cart.quantity = parseInt(document.querySelector(`#item${id}`).value);
+    localStorage.setItem(keyLocalStorage, JSON.stringify(carts));
     loadListCart();
 }
 
@@ -182,11 +192,12 @@ function removeItem(id) {
         type: 'error',
         duration: 2000 
     });
-    localStorage.setItem('carts', JSON.stringify(carts));
+    localStorage.setItem(keyLocalStorage, JSON.stringify(carts));
     loadListCart();
 }
-
-// Call function
-loadHeader();
-getCurrentAccount();
-loadListCart();
+setTimeout(function(){ 
+	// Call function
+	loadHeader();
+	getCurrentAccount();
+	loadListCart();
+}, 200);

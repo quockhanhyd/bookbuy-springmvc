@@ -20,15 +20,6 @@
     <link rel="stylesheet" href="<c:url value='/template/css/base.css' />">
     <link rel="stylesheet" href="<c:url value='/template/css/grid.css' />">
     <link rel="stylesheet" href="<c:url value='/template/css/style_address.css' />">
-    <script>
-        var url = window.location.href.split('/');
-        url.pop();
-        url.pop();
-        var path = url.join('/') + '/';
-        if (localStorage.getItem('carts') == null) {
-            window.location = `${path}home`;
-        }
-    </script>
 </head>
 
 <body>

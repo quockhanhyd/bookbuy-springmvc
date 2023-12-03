@@ -150,7 +150,6 @@ public class PurchaseAPI {
      
     private void writeTableData(PdfPTable table, BillEntity bill) {
     	int stt = 1;
-    	Long total = 0L;
         PdfPCell cell = new PdfPCell();
         
         for (BillInfoEntity billInfo : bill.getBillsInfo()) {
@@ -169,16 +168,29 @@ public class PurchaseAPI {
 
         	cell.setPhrase(new Phrase(removeDiacritics(formatCurrency(billInfo.getPrice() * billInfo.getQuantity())), font13));
             table.addCell(cell);
-            
-            total += billInfo.getPrice() * billInfo.getQuantity();
         }
+        
+        cell.setPhrase(new Phrase((stt++) + "", font13));
+        table.addCell(cell);
+
+    	cell.setPhrase(new Phrase(removeDiacritics("Phí ship"), font13));
+        table.addCell(cell);
+
+    	cell.setPhrase(new Phrase(removeDiacritics(formatCurrency(30000)), font13));
+        table.addCell(cell);
+
+    	cell.setPhrase(new Phrase(""));
+        table.addCell(cell);
+
+    	cell.setPhrase(new Phrase(removeDiacritics(formatCurrency(30000)), font13));
+        table.addCell(cell);
         
         table.addCell("");
         cell.setPhrase(new Phrase(removeDiacritics("TỔNG"), font13));
         table.addCell(cell);
         table.addCell("");
         table.addCell("");
-        cell.setPhrase(new Phrase(removeDiacritics(formatCurrency(total)), font13));
+        cell.setPhrase(new Phrase(removeDiacritics(formatCurrency(bill.getTotalPrice())), font13));
         table.addCell(cell);
     }
     

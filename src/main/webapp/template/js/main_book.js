@@ -230,13 +230,14 @@ function getDataBook() {
 
 // Add cart
 function addToCart() {
+	var quantity = +document.querySelector('#quantity-book').value;
     var hasCart = carts.find(function (value) {
         return value.id == id;
     });
     if (hasCart) {
-        hasCart.quantity += 1;
+        hasCart.quantity += quantity;
         showToast({
-            message: `Số lượng sách trong giỏ hàng vừa được tăng thêm 1 : ${hasCart.name}`,
+            message: `Số lượng sách trong giỏ hàng vừa được tăng thêm ${quantity} : ${hasCart.name}`,
             type: 'info',
             duration: 2000
         });
@@ -248,15 +249,15 @@ function addToCart() {
             author: book.author,
             image: book.image,
             currentPrice: book.currentPrice,
-            quantity: 1
+            quantity: quantity
         });
         showToast({
-            message: `Bạn đã thêm vào giỏ hàng sách: ${book.name}`,
+            message: `Bạn đã thêm ${quantity} quyển vào giỏ hàng sách: ${book.name}`,
             type: 'success',
             duration: 2000
         });
     }
-    localStorage.setItem('carts', JSON.stringify(carts));
+    localStorage.setItem(keyLocalStorage, JSON.stringify(carts));
     loadCart();
 }
 
@@ -272,8 +273,21 @@ function removeFromCart(id) {
         type: 'error',
         duration: 2000
     });
-    localStorage.setItem('carts', JSON.stringify(carts));
+    localStorage.setItem(keyLocalStorage, JSON.stringify(carts));
     loadCart();
+}
+
+function changeQuantity(quantity) {
+	var quantityDOM = document.querySelector('#quantity-book');
+	quantityDOM.value = +quantityDOM.value + quantity;
+	if (quantityDOM.value < 1) {
+		quantityDOM.value = 1;
+	}
+}
+
+function buyNow() {
+	addToCart();
+	window.location = `${path}cart`;
 }
 
 // Call function

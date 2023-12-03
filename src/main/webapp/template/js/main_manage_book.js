@@ -320,6 +320,17 @@ function uploadImage(method, bookId) {
     }
 }
 
+function calcCurrentPrice() {
+	var oldPrice = parseInt(document.querySelector('#book-old-price').value);
+	var salePercent = parseInt(document.querySelector('#book-sale').value);
+	
+	document.querySelector('#book-current-price').value = roundToNearestThousand(oldPrice - oldPrice * salePercent / 100);
+}
+
+function roundToNearestThousand(number) {
+    return Math.ceil(number / 1000) * 1000;
+}
+
 // Call function
 getDataCate();
 getDataBook();

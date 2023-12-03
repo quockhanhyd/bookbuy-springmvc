@@ -130,3 +130,12 @@ function saveCustomerInfo() {
 
 // Call function
 getDataProvinces();
+
+setTimeout(function(){ 
+	if (account != null && account != undefined) keyLocalStorage += account.id;
+	
+	if(localStorage.getItem(keyLocalStorage) == null) {
+    	window.location = `${path}home`;
+	}
+    loadCart();
+}, 200);  

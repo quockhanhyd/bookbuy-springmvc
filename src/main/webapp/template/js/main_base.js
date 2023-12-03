@@ -1,15 +1,13 @@
 // Declare variable
 var categories = [];
 var author = '';
-
+var keyLocalStorage = 'carts:';
 var carts = [];
-if (localStorage.getItem('carts') != null) {
-    carts = JSON.parse(localStorage.getItem('carts'));
-}
 
-var url = window.location.href.split('/');
-url.pop();
-var path = url.join('/') + '/';
+//var url = window.location.href.split('/');
+//url.pop();
+//var path = url.join('/') + '/';
+var path = 'http://localhost:8080/BookBuy/';
 
 // Get data
 function getDataCate() {
@@ -121,6 +119,11 @@ function addToCart(id) {
         var newCart = books.find(function (value) {
             return value.id == id;
         });
+        if (newCart == null) {
+			newCart = booksBanChay.find(function (value) {
+            return value.id == id;
+        });
+		}
         carts.push({
             id: newCart.id,
             name: newCart.name,
@@ -135,7 +138,7 @@ function addToCart(id) {
             duration: 2000
         });
     }
-    localStorage.setItem('carts', JSON.stringify(carts));
+    localStorage.setItem(keyLocalStorage, JSON.stringify(carts));
     loadCart();
 }
 
@@ -151,7 +154,7 @@ function removeFromCart(id) {
         type: 'error',
         duration: 2000
     });
-    localStorage.setItem('carts', JSON.stringify(carts));
+    localStorage.setItem(keyLocalStorage, JSON.stringify(carts));
     loadCart();
 }
 
@@ -258,4 +261,14 @@ function loadHeader() {
 // Call function
 getDataCate();
 authorization();
-loadCart();
+getCurrentAccount();
+
+setTimeout(function(){ 
+	if (account != null && account != undefined) keyLocalStorage += account.id;
+	
+	if(localStorage.getItem(keyLocalStorage) != null) {
+    	carts = JSON.parse(localStorage.getItem(keyLocalStorage));
+	}
+    loadCart();
+}, 200);  
+

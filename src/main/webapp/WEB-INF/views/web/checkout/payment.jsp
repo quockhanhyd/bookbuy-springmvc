@@ -20,16 +20,6 @@
     <link rel="stylesheet" href="<c:url value='/template/css/base.css' />">
     <link rel="stylesheet" href="<c:url value='/template/css/grid.css' />">
     <link rel="stylesheet" href="<c:url value='/template/css/style_payment.css' />">
-
-    <script>
-        var url = window.location.href.split('/');
-        url.pop();
-        url.pop();
-        var path = url.join('/') + '/';
-        if (localStorage.getItem('carts') == null || localStorage.getItem('customer') == null) {
-            window.location = `${path}home`;
-        }
-    </script>
 </head>
 
 <body>
@@ -158,6 +148,7 @@
     </div>
 
     <script src="<c:url value='/template/js/toast.js' />"></script>
+    <script src="<c:url value='/template/js/main_base.js' />"></script>
     <script src="<c:url value='/template/js/main_payment.js' />"></script>
 </body>
 

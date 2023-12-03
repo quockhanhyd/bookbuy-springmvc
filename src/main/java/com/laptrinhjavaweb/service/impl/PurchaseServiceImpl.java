@@ -109,7 +109,7 @@ public class PurchaseServiceImpl implements IPurchaseService {
 	@Override
 	public List<OrderDTO> getAllOrders() {
 		List<OrderDTO> result = new ArrayList<>();
-		List<BillEntity> bills = billRepository.findAll();
+		List<BillEntity> bills = billRepository.findAllByOrderByIdDesc();
 		for (BillEntity bill : bills) {
 			OrderDTO order = new OrderDTO();
 			order.carts = new ArrayList<>();

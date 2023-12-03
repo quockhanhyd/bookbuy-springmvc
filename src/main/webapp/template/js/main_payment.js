@@ -7,10 +7,6 @@ url.pop();
 url.pop();
 var path = url.join('/') + '/';
 
-// Get data
-carts = JSON.parse(localStorage.getItem('carts'));
-customer = JSON.parse(localStorage.getItem('customer'));
-
 // render data
 function renderDataCart() {
     var totalPrice = 0;
@@ -104,7 +100,7 @@ function order() {
             console.log(responseData);
             if(responseData.data > 0) {
                 orderSuccess(responseData.data);
-                localStorage.removeItem('carts');
+                localStorage.removeItem(keyLocalStorage);
                 localStorage.removeItem('customer');
 
                 showToast({
@@ -147,5 +143,15 @@ function orderSuccess(idPurchase) {
 }
 
 // Call function
-renderDataCart();
-renderDataReceiver()
+
+setTimeout(function(){ 
+	// Get data
+	carts = JSON.parse(localStorage.getItem(keyLocalStorage));
+	customer = JSON.parse(localStorage.getItem('customer'));
+	
+	if(localStorage.getItem(keyLocalStorage) == null || localStorage.getItem('customer') == null) {
+    	window.location = `${path}home`;
+	}
+	renderDataCart();
+	renderDataReceiver()
+}, 200);  
