@@ -141,17 +141,30 @@ function orderSuccess(idPurchase) {
         time--;
     }, 1000);
 }
+function getCurrentAccount() {
+    var http = new XMLHttpRequest();
 
-// Call function
+    http.open('GET', path + `api/current-account`, true);
 
-setTimeout(function(){ 
-	// Get data
-	carts = JSON.parse(localStorage.getItem(keyLocalStorage));
-	customer = JSON.parse(localStorage.getItem('customer'));
+    http.send();
+
+    http.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var responseData = JSON.parse(this.responseText);
+            account = responseData.data;
+            if (account != null && account != undefined && keyLocalStorage.split(':')[1] != '') keyLocalStorage += account.id;
 	
-	if(localStorage.getItem(keyLocalStorage) == null || localStorage.getItem('customer') == null) {
-    	window.location = `${path}home`;
-	}
-	renderDataCart();
-	renderDataReceiver()
-}, 200);  
+			// Get data
+			carts = JSON.parse(localStorage.getItem(keyLocalStorage));
+			customer = JSON.parse(localStorage.getItem('customer'));
+			
+			if(localStorage.getItem(keyLocalStorage) == null || localStorage.getItem('customer') == null) {
+		    	window.location = `${path}home`;
+			}
+			renderDataCart();
+			renderDataReceiver()
+        }
+    }
+}
+// Call function 
+getCurrentAccount();

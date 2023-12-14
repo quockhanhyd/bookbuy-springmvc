@@ -12,7 +12,14 @@ public class BookDTO {
 	private String description;
 	private String image;
 	private String cateName;
+	private Long numberSold;
 	
+	public Long getNumberSold() {
+		return numberSold;
+	}
+	public void setNumberSold(Long numberSold) {
+		this.numberSold = numberSold;
+	}
 	public Long getId() {
 		return id;
 	}

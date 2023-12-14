@@ -294,7 +294,6 @@ function buyNow() {
 getDataCate();
 authorization();
 loadHeader();
-loadCart();
 getCurrentAccount();
 getDataBook();
 setTimeout(getDataComment(), 1000);

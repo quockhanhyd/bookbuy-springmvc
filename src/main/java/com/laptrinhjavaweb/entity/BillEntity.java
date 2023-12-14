@@ -17,14 +17,14 @@ public class BillEntity extends BaseEntity {
 	private Long customerId;
 	
 	@Column
-	private int status;
+	private int status; // trạng thái đơn hàng (đã xác nhận, đã đóng gói,...)
 	
 	@Column
 	private Long totalPrice;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bill")
 	private List<BillInfoEntity> billsInfo = new ArrayList<>();
-
+// ds các tt hoá đơn lq đến hoá đơn này
 	public BillEntity() {
 		super();
 	}

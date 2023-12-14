@@ -70,6 +70,13 @@ function getCurrentAccount() {
             account = responseData.data;
             loadHeader();
             loadInfo()
+            
+            if (account != null && account != undefined && keyLocalStorage.split(':')[1] != '') keyLocalStorage += account.id;
+
+			var carts = [];
+			if(localStorage.getItem(keyLocalStorage) != null) {
+			    carts = JSON.parse(localStorage.getItem(keyLocalStorage));
+			}
         }
     }
 }
@@ -77,9 +84,3 @@ function getCurrentAccount() {
 // Call function
 getCurrentAccount();
 
-if (account != null && account != undefined) keyLocalStorage += account.id;
-
-var carts = [];
-if(localStorage.getItem(keyLocalStorage) != null) {
-    carts = JSON.parse(localStorage.getItem(keyLocalStorage));
-}

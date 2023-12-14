@@ -90,6 +90,11 @@ function loadListCart() {
 				btn.style.backgroundColor = 'rgb(153, 153, 153)';
 				btn.style.cursor = 'no-drop';
 			}
+			else {
+				var btn = document.querySelector("body > div.app > div > div > div.app-content__cart-list > div > div.col.l-3.m-3.c-12 > div > a");
+				btn.style.backgroundColor = 'var(--primary-color)';
+				btn.style.cursor = 'pointer';
+			}
         }
     }
 }
@@ -195,9 +200,28 @@ function removeItem(id) {
     localStorage.setItem(keyLocalStorage, JSON.stringify(carts));
     loadListCart();
 }
-setTimeout(function(){ 
-	// Call function
-	loadHeader();
-	getCurrentAccount();
-	loadListCart();
-}, 200);
+function getCurrentAccount() {
+    var http = new XMLHttpRequest();
+
+    http.open('GET', path + `api/current-account`, true);
+
+    http.send();
+
+    http.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var responseData = JSON.parse(this.responseText);
+            account = responseData.data;
+            loadHeader();
+            if (account != null && account != undefined && keyLocalStorage.split(':')[1] != '') keyLocalStorage += account.id;
+	
+			if(localStorage.getItem(keyLocalStorage) != null) {
+		    	carts = JSON.parse(localStorage.getItem(keyLocalStorage));
+			}
+		    loadCart();
+		    loadListCart();
+        }
+    }
+}
+// Call function
+loadHeader();
+getCurrentAccount();

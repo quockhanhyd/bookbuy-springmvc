@@ -213,6 +213,12 @@ function getCurrentAccount() {
             var responseData = JSON.parse(this.responseText);
             account = responseData.data;
             loadHeader();
+            if (account != null && account != undefined && keyLocalStorage.split(':')[1] != '') keyLocalStorage += account.id;
+	
+	if(localStorage.getItem(keyLocalStorage) != null) {
+    	carts = JSON.parse(localStorage.getItem(keyLocalStorage));
+	}
+    loadCart();
         }
     }
 }
@@ -263,12 +269,12 @@ getDataCate();
 authorization();
 getCurrentAccount();
 
-setTimeout(function(){ 
-	if (account != null && account != undefined) keyLocalStorage += account.id;
-	
-	if(localStorage.getItem(keyLocalStorage) != null) {
-    	carts = JSON.parse(localStorage.getItem(keyLocalStorage));
-	}
-    loadCart();
-}, 200);  
+//setTimeout(function(){ 
+//	if (account != null && account != undefined) keyLocalStorage += account.id;
+//	
+//	if(localStorage.getItem(keyLocalStorage) != null) {
+//    	carts = JSON.parse(localStorage.getItem(keyLocalStorage));
+//	}
+//    loadCart();
+//}, 500);  
 

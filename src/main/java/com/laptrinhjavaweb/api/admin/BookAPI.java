@@ -70,6 +70,9 @@ public class BookAPI {
 		if(SecurityUtils.isAuthentication()) {
 			if(SecurityUtils.isADMIN()) {
 				try {
+					BookEntity bookOld = bookService.findOne(bookDTO.getId());
+					bookDTO.setNumberSold(bookOld.getNumberSold());
+					
 					BookEntity bookEntity = bookMapper.convertToEntity(bookDTO);
 					bookEntity = bookService.save(bookEntity);
 					return ResponseEntity.status(HttpStatus.OK).body(

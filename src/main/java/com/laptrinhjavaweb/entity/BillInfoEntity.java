@@ -14,7 +14,7 @@ public class BillInfoEntity extends BaseEntity {
 	private Long bookId;
 	
 	@Column
-	private Long quantity;
+	private Long quantity; //số lượng sách trong hđ
 	
 	@Column
 	private Long price;

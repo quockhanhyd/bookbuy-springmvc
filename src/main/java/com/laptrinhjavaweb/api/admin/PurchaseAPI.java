@@ -221,7 +221,7 @@ public class PurchaseAPI {
         p5.setAlignment(Paragraph.ALIGN_CENTER);
         Paragraph p6 = new Paragraph(removeDiacritics("(SALE INVOICE)"), font18bi);
         p6.setAlignment(Paragraph.ALIGN_CENTER);
-        Paragraph p7 = new Paragraph(removeDiacritics("Ngày/Date " + bill.getCreateDate().getDate() + " tháng/month " + bill.getCreateDate().getMonth() + " năm/year " + bill.getCreateDate().getYear()), font13i);
+        Paragraph p7 = new Paragraph(removeDiacritics("Ngày/Date " + bill.getCreateDate().getDate() + " tháng/month " + (bill.getCreateDate().getMonth()+1) + " năm/year " + (bill.getCreateDate().getYear()+1900)), font13i);
         p7.setAlignment(Paragraph.ALIGN_CENTER);
         
         Paragraph p8 = new Paragraph(removeDiacritics("Họ và tên người mua hàng (Customer name): " + customer.getFullName()), font13);
