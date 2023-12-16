@@ -39,7 +39,7 @@ function getDataBook() {
 function renderBooks() {
     var category = categories.find(function(category) {return category.id == cate});
     document.getElementById('view-cate').innerText = (cate == 0) ? 'Tất cả' : category.name;
-    document.getElementById('view-search').innerText = txtSearch;
+    document.getElementById('view-search').innerText = decodeURIComponent(txtSearch);
 
     var listBooksDOM = document.querySelector('.app-content-books__list');
     listBooksDOM.innerHTML = '';

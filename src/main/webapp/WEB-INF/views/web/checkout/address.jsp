@@ -26,7 +26,7 @@
     <div class="app">
         <div class="modal"></div>
         <label class="modal__input" style="width: 1000px; max-width: 95%;">
-            <form action="<c:url value='/checkout/payment' />" method="POST">
+            <form action="<c:url value='/checkout/payment' />" id="formSubmit" method="POST">
                 <div class="modal-input__text">
                     <h2>Nhập thông tin và địa chỉ nhận hàng của bạn!</h2><br>
                 </div>

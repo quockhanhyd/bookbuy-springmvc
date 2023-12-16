@@ -53,7 +53,7 @@ public class BookMapper {
 		bookEntity.setImage(bookDTO.getImage());
 		bookEntity.setSale(bookDTO.getSale());
 		bookEntity.setQuantity(bookDTO.getQuantity());
-		bookEntity.setNumberSold(bookDTO.getNumberSold());
+		bookEntity.setNumberSold(bookDTO.getNumberSold() == null ? 0L : bookDTO.getNumberSold());
 		List<CommentEntity> commentEntities = commentRepository.findByBook(bookRepository.findOne(bookDTO.getId()));
 		bookEntity.setComments(commentEntities);
 		return bookEntity;

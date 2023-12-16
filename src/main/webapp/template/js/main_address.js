@@ -103,6 +103,22 @@ function renderDataWards() {
     });
 }
 
+function validatePhoneNumber(phoneNumber) {
+  const sanitizedPhoneNumber = phoneNumber.replace(/\D/g, ''); // Lọc bỏ các ký tự không phải số
+
+  return sanitizedPhoneNumber.length === 10 && !isNaN(sanitizedPhoneNumber);
+}
+
+document.getElementById('formSubmit').addEventListener('submit', function(event) {
+  const phoneNumberInput = document.getElementById('phone');
+  const phoneNumber = phoneNumberInput.value;
+
+  if (!validatePhoneNumber(phoneNumber)) {
+    alert('Vui lòng nhập số điện thoại hợp lệ (10 số).');
+    event.preventDefault(); // Ngăn form submit nếu số điện thoại không hợp lệ
+  }
+});
+
 function saveCustomerInfo() {
     var province = provinces.find(function(value) {
         return value.matp == document.getElementById('province').value;
