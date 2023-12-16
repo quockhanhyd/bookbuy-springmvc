@@ -30,7 +30,7 @@
                         <div class="app-content-info__sale">-${book.sale}%</div>
                         <div class="app-content-info__old-price">${FormatNumberUltils.priceToString(book.oldPrice)}đ</div>
                         <c:if test="${book.quantity > 0}">
-                        	<div class="app-content-info__status">Tình trạng: <p style="font-weight: 600">Còn hàng (${book.quantity}quyển)</p></div>
+                        	<div class="app-content-info__status">Tình trạng: <p style="font-weight: 600">Còn hàng (${book.quantity} quyển)</p></div>
                         </c:if>
                         <c:if test="${book.quantity <= 0}">
                         	<div class="app-content-info__status">Tình trạng: <p style="color: red; font-weight: 600">Hết hàng</p></div>
@@ -39,12 +39,18 @@
                         <div class="app-content-info__quantity">
                             Số lượng: &nbsp; &nbsp;
                             <span onclick="changeQuantity(-1)">-</span>
-                            <input type="text" value="1" id="quantity-book">
+                            <input type="text" value="1" id="quantity-book" onchange="onChangeQuantity()">
                             <span onclick="changeQuantity(1)">+</span>
                         </div>
                         <div class="app-content-info__btn">
-                            <span class="app__btn app-content-info__btn--btn-add" onclick="addToCart()">Thêm vào giỏ hàng</span>
-                            <span class="app__btn" onclick="buyNow()">Mua ngay</span>
+                        	<c:if test="${book.quantity > 0}">
+	                            <span class="app__btn app-content-info__btn--btn-add" onclick="addToCart()">Thêm vào giỏ hàng</span>
+	                            <span class="app__btn" onclick="buyNow()">Mua ngay</span>
+                            </c:if>
+                            <c:if test="${book.quantity <= 0}">
+	                        	<span class="app__btn app-content-info__btn--btn-add" style="cursor: no-drop;border-color:#999;color:#999;">Thêm vào giỏ hàng</span>
+	                            <span class="app__btn" style="cursor: no-drop;background-color:#999;">Mua ngay</span>
+	                        </c:if>
                         </div>
                         <div class="app-content-info__tel">
                             Gọi đặt hàng: <a href="tel: 0961271218">0961271218</a> 
@@ -117,5 +123,6 @@
         </div>
     </div>
 </div>
+<div id="bookQuantity">${book.quantity}</div>
 <script src="<c:url value='/template/js/main_base.js' />"></script>
 <script src="<c:url value='/template/js/main_book.js' />"></script>

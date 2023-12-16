@@ -283,6 +283,16 @@ function changeQuantity(quantity) {
 	if (quantityDOM.value < 1) {
 		quantityDOM.value = 1;
 	}
+	if (quantityDOM.value > book.quantity) {
+		quantityDOM.value = book.quantity;
+	}
+}
+
+function onChangeQuantity() {
+	var quantityDOM = document.querySelector('#quantity-book');
+	if (quantityDOM.value > book.quantity) {
+		quantityDOM.value = book.quantity;
+	}
 }
 
 function buyNow() {

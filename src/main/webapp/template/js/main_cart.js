@@ -1,5 +1,12 @@
 // Declare variable
 var account;
+var isAccept = true;
+
+document.getElementById('btn-order').addEventListener('click', function(event) {
+  if (!isAccept) {
+    event.preventDefault(); // Ngăn chặn sự kiện mặc định khi click vào thẻ <a>
+  }
+});
 
 // Load list cart
 function loadListCart() {
@@ -20,7 +27,7 @@ function loadListCart() {
 		
 		    var totalBooks = 0;
 		    var totalPrice = 0;
-			var isAccept = true;
+			isAccept = true;
 		    
 		    
 		    if(carts.length > 0) {

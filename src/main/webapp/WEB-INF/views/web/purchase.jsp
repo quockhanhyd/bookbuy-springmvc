@@ -14,7 +14,7 @@
     </div>
     <div class="app-content__body">
         <div class="grid wide">
-            <ul class="app-content-body__navbar">
+            <ul class="app-content-body__navbar" style="display:none;">
                 <li class="app-content-body__navbar-item item--active">Tất cả</li>
                 <li class="app-content-body__navbar-item">Chờ xác nhận</li>
                 <li class="app-content-body__navbar-item">Đang giao</li>
@@ -30,36 +30,9 @@
             </div>
             <div id="search__text" class="active-color" style="line-height: 3rem; margin-top: 12px;">Bạn hãy nhập mã đơn hàng của bạn để xem thông tin chi tiết nhé!</div>
             <ul class="app-content-body__list">
-                <%-- <li class="app-content-body__list-item">
-                    <div class="app-content-body-list-item__info">
-                        <div class="app-content-body-list-item__img">
-                            <img src="../assets/images/tho-peter-cuoc-giai-cuu-ngay-giang-sinh_32047_1.png" alt="">
-                        </div>
-                        <div class="app-content-body-list-item__name">
-                            <h2>NHÀ SÁCH TRỰC TUYẾN BOOKBUY.VN
-                                Mua sách online tại nhà sách trực tuyến Bookbuy.vn để được cập nhật nhanh nhất các tựa sách đủ thể loại với mức giảm 15 – 35% cùng nhiều ưu đãi, quà tặng kèm. Qua nhiều năm, không chỉ là địa chỉ tin cậy để bạn mua sách trực tuyến, Bookbuy còn có quà tặng, văn phòng phẩm, vật dụng gia đình,…với chất lượng đảm bảo, chủng loại đa dạng, chế độ bảo h</h2>
-                            <p>Nguyễn Văn A</p>
-                            <span>x 2</span>
-                        </div>
-                        <div class="app-content-body-list-item__price">
-                            <div class="app-content-body-list-item__price-current">99,000đ</div>
-                            <div class="app-content-body-list-item__price-old">100,000đ</div>
-                        </div>
-                    </div>
-                    <div class="app-content-body-list-item__control">
-                        <div class="app-content-body-list-item-control__left">
-                            <h2>Q Khanh</h2>
-                            <p>Nam Định</p>
-                            <span>091221892</span>
-                        </div>
-                        <div class="app-content-body-list-item-control__center">Chờ xác nhận</div>
-                        <div class="app-content-body-list-item-control__right">
-                            <h2><i class="fas fa-tags"></i> Tổng số tiền: &nbsp;<p>99,000đ</p>
-                            </h2>
-                            <span class="app__btn">Hủy</span>
-                        </div>
-                    </div>
-                </li> --%>
+                <li class="app-content-body__list-item">
+                    
+                </li>
             </ul>
             <div id="btn-cancel" style="height: 60px;"></div>
         </div>

@@ -210,7 +210,7 @@ public class PurchaseAPI {
         document.open();
         Paragraph p1 = new Paragraph(removeDiacritics("CÔNG TY CỔ PHẦN SÁCH TRÀNG AN"), font13b);
         p1.setAlignment(Paragraph.ALIGN_LEFT);
-        Paragraph p2 = new Paragraph(removeDiacritics("Địa chỉ (Address): 54 Triều Khúc, Thanh Xuân, Hà Nội"), font13b);
+        Paragraph p2 = new Paragraph(removeDiacritics("Địa chỉ (Address): CT36, Tòa nhà Metropolitan, Hoàng Mai, Hà Nội"), font13b);
         p2.setAlignment(Paragraph.ALIGN_LEFT);
         Paragraph p3 = new Paragraph((removeDiacritics("Điện thoại (Phone): 01234556789")), font13b);
         p3.setAlignment(Paragraph.ALIGN_LEFT);

@@ -36,7 +36,7 @@ function getDataPurchase() {
 
 // Render data
 function renderPurchases() {
-    const purchaseDOM = document.querySelector('.app-content-body__list');
+    const purchaseDOM = document.querySelector('.app-content-body__list-item');
     purchaseDOM.innerHTML = '';
 
     if(purchases.length <= 0) {
@@ -46,22 +46,20 @@ function renderPurchases() {
 
     document.getElementById('search__text').innerText = `Bạn đang tìm với đơn hàng có mã: ${document.getElementById('search-id').value}`;
 
+	var total = 0;
+    var status = '';
     purchases.forEach(function(value) {
-        var purchaseItem = document.createElement('li');
-        purchaseItem.classList.add('app-content-body__list-item');
-
         if(value.status < 2) {
             document.getElementById('btn-cancel').innerHTML = '<span class="app__btn" style="float: right; margin: 10px 0;" onclick="showDialogQuestion()">Hủy đơn hàng</span>';
         }
 
-        var status = '';
         if(value.status == 0) status = 'Chờ xác nhận';
         else if(value.status == 1) status = 'Đã đóng gói';
         else if(value.status == 2) status = 'Đang vận chuyển';
         else if(value.status == 3) status = 'Đã giao hàng';
         else if(value.status == 4) status = 'Đã hủy';
 
-        purchaseItem.innerHTML = `
+        purchaseDOM.innerHTML += `
         <div class="app-content-body-list-item__info">
             <div class="app-content-body-list-item__img">
                 <img src="template/images/${value.image}" alt="">
@@ -76,6 +74,14 @@ function renderPurchases() {
                 <div class="app-content-body-list-item__price-old">${new Intl.NumberFormat().format(value.oldPrice)}đ</div>
             </div>
         </div>
+        `;
+
+        total += value.currentPrice*value.quantity;
+    });
+    
+    total += 30000; // phi ship
+    
+    purchaseDOM.innerHTML += `
         <div class="app-content-body-list-item__control">
             <div class="app-content-body-list-item-control__left">
                 <h2>${customer.fullName}</h2>
@@ -84,16 +90,14 @@ function renderPurchases() {
             </div>
             <div class="app-content-body-list-item-control__center">${status}</div>
             <div class="app-content-body-list-item-control__right">
+            	<div style="text-align: end;color: #999;">Phí ship: ${new Intl.NumberFormat().format(30000)}đ</div>
                 <h2>
                     <i class="fas fa-tags"></i> 
-                    Tổng số tiền: &nbsp;<p>${new Intl.NumberFormat().format(value.currentPrice*value.quantity)}đ</p>
+                    Tổng số tiền: &nbsp;<p>${new Intl.NumberFormat().format(total)}đ</p>
                 </h2>
             </div>
         </div>
-        `;
-
-        purchaseDOM.appendChild(purchaseItem);
-    });
+    `;
 }
 
 // Show Dialog

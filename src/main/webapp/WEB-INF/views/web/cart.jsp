@@ -29,7 +29,7 @@
                                 <div class="app-content-cart-list-checkout-body__extra">( Chưa có cước vận chuyển )
                                 </div>
                             </div>
-                            <a href="<c:url value='/checkout/address' />" class="app-content-cart-list-checkout__btn">Tiến hành đặt
+                            <a href="<c:url value='/checkout/address' />" id="btn-order" class="app-content-cart-list-checkout__btn">Tiến hành đặt
                                 hàng</a>
                         </div>
                     </div>
