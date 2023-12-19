@@ -43,7 +43,7 @@
                                 Quản lý đơn đặt hàng
                             </a>
                         </li>
-                        <li class="app-container-menu-control__item active-color">
+                        <li class="app-container-menu-control__item active-color" id="tab-admin">
                             <a href="<c:url value='/admin/manage-user-info' />">
                                 <span class="material-icons-outlined">manage_accounts</span>
                                 Quản lý thông tin người dùng
@@ -53,6 +53,12 @@
                             <a href="<c:url value='/chat' />">
                                 <span class="material-icons-outlined">question_answer</span>
                                 Chat với khách hàng
+                            </a>
+                        </li>
+                        <li class="app-container-menu-control__item">
+                            <a href="<c:url value='/admin/statistic' />">
+                                <span class="material-symbols-outlined">monitoring</span>
+                                Thống kê
                             </a>
                         </li>
                         <li class="app-container-menu-control__item">
@@ -150,8 +156,9 @@
                                                 <div class="modal-input__group">
                                                     <i class="fas fa-users-cog"></i>
                                                     <select name="permisstion" id="permission">
-                                                        <option value="USER">USER</option>
-                                                        <option value="ADMIN">ADMIN</option>
+                                                        <option value="USER">Người dùng</option>
+                                                        <option value="STAFF">Nhân viên</option>
+                                                        <option value="ADMIN">Quản trị hệ thống</option>
                                                     </select>
                                                 </div>
                                             </div>

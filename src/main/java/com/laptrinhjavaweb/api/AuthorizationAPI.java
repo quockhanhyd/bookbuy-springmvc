@@ -41,6 +41,11 @@ public class AuthorizationAPI {
 						new ResponseMessage("OK", "You are user!", "USER")
 					);
 			}
+			else if(roles.contains("STAFF")) {
+				return ResponseEntity.ok(
+						new ResponseMessage("OK", "You are staff!", "STAFF")
+					);
+			}
 		}
 		return ResponseEntity.ok(
 				new ResponseMessage("OK", "You are not sign in!", "NOT AUTHENTICATE")

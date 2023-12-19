@@ -9,7 +9,7 @@
             
     <http auto-config="false" use-expressions="true" disable-url-rewriting="true">
     	
-    	<intercept-url pattern="/admin/*" access="hasAnyRole('ADMIN')"/>
+    	<intercept-url pattern="/admin/*" access="hasAnyRole('ADMIN', 'STAFF')"/>
     	
     	<access-denied-handler error-page="/login?accessDenied" />
         <form-login  login-page="/login"

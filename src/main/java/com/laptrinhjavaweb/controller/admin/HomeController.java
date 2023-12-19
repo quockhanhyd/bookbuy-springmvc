@@ -34,4 +34,9 @@ public class HomeController {
 		return new ModelAndView("admin/manage-purchase");
 	}
 	
+	@RequestMapping(value = {"/statistic"}, method = RequestMethod.GET)
+	public ModelAndView loadStatistic() {
+		return new ModelAndView("admin/manage-statistic");
+	}
+	
 }

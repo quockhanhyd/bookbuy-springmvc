@@ -83,7 +83,7 @@ function authorization() {
             var responseData = JSON.parse(this.responseText);
             author = responseData.data;
             console.log(author);
-            if(author == 'ADMIN') {
+            if(author == 'ADMIN' || author == 'STAFF') {
                 var bodyDOM = document.querySelector('body');
             
                 var btnGoToAdmin = document.createElement('a');

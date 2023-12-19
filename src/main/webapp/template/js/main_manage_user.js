@@ -120,7 +120,7 @@ function editUser(method) {
         gender: (male.checked) ? 0 : ((female.checked) ? 1 : 2),
         phone: document.getElementById('phone').value.trim(),
         email: document.getElementById('email').value.trim(),
-        role: (document.getElementById('permission').value=='ADMIN') ? 'ADMIN' : 'USER',
+        role: document.getElementById('permission').value,
         birthday: parseInt(birthText[2]),
         birthmonth: parseInt(birthText[1]),
         birthyear: parseInt(birthText[0])
