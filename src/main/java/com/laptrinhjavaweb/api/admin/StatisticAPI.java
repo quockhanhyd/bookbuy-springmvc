@@ -212,7 +212,9 @@ public class StatisticAPI {
 							item.getCreateDate().getMonth() == s.getDate().getMonth() &&
 							item.getCreateDate().getYear() == s.getDate().getYear()) {
 								s.setSale(s.getSale() + item.getTotalPrice());
-								s.getListBillID().add(item.getId());
+								List<Long> ltIDs = new ArrayList<>(s.getListBillID());
+								ltIDs.add(item.getId());
+								s.setListBillID(ltIDs);
 								
 								StringBuilder bookNameBuilder = new StringBuilder();
 								item.getBillsInfo().forEach(x -> {
@@ -225,9 +227,7 @@ public class StatisticAPI {
 								                   .append(" \n");
 								});
 
-								String bookName = bookNameBuilder.length() >= 2 ? 
-					                    bookNameBuilder.substring(0, bookNameBuilder.length() - 2) : 
-					                        bookNameBuilder.toString();
+								String bookName = bookNameBuilder.toString();
 								s.setBookName(s.getBookName() + bookName);
 							}
 						}
@@ -244,9 +244,7 @@ public class StatisticAPI {
 						                   .append("\n");
 						});
 
-						String bookName = bookNameBuilder.length() >= 2 ? 
-			                    bookNameBuilder.substring(0, bookNameBuilder.length() - 2) : 
-			                        bookNameBuilder.toString();
+						String bookName = bookNameBuilder.toString();
 						ltData2.add(new StatisticSalesDTO(new Date(item.getCreateDate().getYear(), item.getCreateDate().getMonth(), item.getCreateDate().getDate()), item.getTotalPrice(), Arrays.asList(item.getId()), bookName));
 					}
 				}
