@@ -55,7 +55,7 @@
                                 Chat với khách hàng
                             </a>
                         </li>
-                        <li class="app-container-menu-control__item">
+                        <li class="app-container-menu-control__item" id="tab-admin">
                             <a href="<c:url value='/admin/statistic' />">
                                 <span class="material-symbols-outlined">monitoring</span>
                                 Thống kê

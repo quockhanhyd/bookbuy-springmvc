@@ -36,7 +36,7 @@ public class SecurityUtils {
 	}
 	
 	public static boolean isADMIN() {
-		return getAuthorities().contains("ADMIN");
+		return getAuthorities().contains("ADMIN") || getAuthorities().contains("STAFF");
 	}
 	
 	public static String encodeMD5(String password) {

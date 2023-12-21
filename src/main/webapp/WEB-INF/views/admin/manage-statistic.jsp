@@ -55,7 +55,7 @@
                                 Chat với khách hàng
                             </a>
                         </li>
-                        <li class="app-container-menu-control__item">
+                        <li class="app-container-menu-control__item" id="tab-admin">
                             <a href="<c:url value='/admin/statistic' />">
                                 <span class="material-symbols-outlined">monitoring</span>
                                 Thống kê
@@ -89,6 +89,7 @@
 						</select>
 						
 						<div class="app__btn" style="margin-left: 8px; height: 100%; line-height: 30px;" onclick="getData()">Tìm kiếm</div>
+						<div class="app__btn" style="margin-left: 8px; height: 100%; line-height: 30px;" onclick="exportExcel()">Xuất file báo cáo</div>
                 	</div>
                     <div style="display: flex">
 						<div id="piechart" style="width: 50%; height: 500px;"></div>

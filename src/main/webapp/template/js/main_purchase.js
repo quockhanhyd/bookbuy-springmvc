@@ -57,7 +57,8 @@ function renderPurchases() {
         else if(value.status == 1) status = 'Đã đóng gói';
         else if(value.status == 2) status = 'Đang vận chuyển';
         else if(value.status == 3) status = 'Đã giao hàng';
-        else if(value.status == 4) status = 'Đã hủy';
+        else if(value.status == 4) status = 'Hoàn thành';
+        else status = 'Đã hủy';
 
         purchaseDOM.innerHTML += `
         <div class="app-content-body-list-item__info">

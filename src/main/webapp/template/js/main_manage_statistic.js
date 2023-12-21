@@ -83,4 +83,29 @@ function formatDate(date) {
 	
 	return `${day}/${month}/${year}`;
 }
+
+function exportExcel() {
+	var http = new XMLHttpRequest();
+    http.open('POST', `${path}admin/api/exportExcel`);
+    http.responseType = 'blob'; // Chỉ định kiểu dữ liệu trả về là blob
+    http.setRequestHeader('Content-Type', 'application/json');
+    http.send(JSON.stringify({fromDate: fromDateDOM.value, toDate: toDateDOM.value, type: typeDOM.value }));
+
+    http.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var blob = this.response;
+            var filename = http.getResponseHeader('content-disposition').split('filename=')[1];
+            var a = document.createElement('a');
+            var url = URL.createObjectURL(blob);
+            a.href = url;
+            a.download = filename; // Thiết lập tên file khi tải xuống
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(function () {
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            }, 0);
+        }
+    };
+}
   

@@ -101,7 +101,7 @@ public class PurchaseServiceImpl implements IPurchaseService {
 		BillEntity bill = billRepository.findOne(id);
 		if(bill == null) return "error";
 		if(bill.getStatus() >= 2) return "cannot be canceled";
-		bill.setStatus(4);
+		bill.setStatus(5);
 		billRepository.save(bill);
 		return "success";
 	}

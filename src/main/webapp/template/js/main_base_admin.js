@@ -46,7 +46,9 @@ function authorization() {
                 bodyDOM.appendChild(btnGoToAdmin);
             }
             else if(author == 'STAFF') {
-				document.querySelector('#tab-admin').style.display = 'none';
+				document.querySelectorAll('#tab-admin').forEach(x => {
+					x.style.display = 'none';
+				})
             }
         }
     }
